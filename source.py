@@ -10,7 +10,7 @@ def getFile(section_path):
 	"""
 	:param root_path:
 	:param section_path:
-	:return:
+	:return: filenames
 	"""
 	files = []
 	if section_path:
@@ -19,11 +19,20 @@ def getFile(section_path):
 		path = ROOT_PATH
 	for file in os.listdir(path):
 		if file.endswith('.jpg'):
-			files.append(os.path.join(ROOT_PATH, section_path, file))
+			files.append(file)
 		# files.append(file)
 		# print type(file)
 	return files
-	
+
+def setImg(section_path):
+	reg_files = getFile(section_path)
+	imgs = []
+	for ele in reg_files:
+		href = os.path.join(ROOT_PATH, section_path, ele)
+		thumbnail = os.path.join(ROOT_PATH, section_path, 'thumbnail', ele)
+		img = {'href': href, 'thumbnail': thumbnail, 'height': 175}
+		imgs.append(img)
+	return imgs
 
 def test():
 	with open('template.html', 'r') as f:
@@ -43,15 +52,14 @@ def test():
 	with open('index.html', 'w') as f:
 		imgs = getFile('index')
 		html = tmp.render(
-			sections = secs,
-			items = imgs
+			sections = secs
 		)
 		f.write(html)
 	
 	# Render page
 	for page in pg_title:
 		fname = page +'.html'
-		imgs = getFile(page)
+		imgs = setImg(page)
 		with open(fname, 'w') as f:
 			html = tmp.render(
 				sections = secs,

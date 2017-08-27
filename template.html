@@ -34,7 +34,9 @@
     <div id="content" class = "container">
         <div id="img-container">
             {% for item in items %}
-                <a href=" {{ item.href }} " class="thickbox" rel="gallery-plants" title=" "><img src=" {{ item.dummy }}" height="item.height"></a>
+                <a href=" {{ item.href }} " class="thickbox" rel="gallery-plants" title=" "><img src=" {{ item.thumbnail }}" height="{{item.height}}"></a>
+            {% else %}
+                <img src="images/index/1.jpg" height="500">
             {% endfor %}
         </div>
     </div>
