@@ -29,7 +29,7 @@ def setImg(section_path):
 	imgs = []
 	for ele in reg_files:
 		href = os.path.join(ROOT_PATH, section_path, ele)
-		thumbnail = os.path.join(ROOT_PATH, section_path, 'thumbnail', ele)
+		thumbnail = os.path.join(ROOT_PATH, section_path, 'thumbnails', ele)
 		img = {'href': href, 'thumbnail': thumbnail, 'height': 175}
 		imgs.append(img)
 	return imgs
