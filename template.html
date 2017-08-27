@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Terrence Liu</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/thickbox.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/thickbox.js"></script>
+    <style type="text/css">a.thickbox { border: none; } a.thickbox img { border: 3px solid #fff; margin: 0 6px 9px 0; }</style>
+</head>
+<body>
+    <div id="title">
+        <div id="menu">
+            <p id = "header">  </p>
+            <div>
+                {% block menu %}
+                <ul class = "menu-section">
+                    <li class="section-title"><a href="index.html"> Portfolio </a></li>
+                    {% for section in sections %}
+                        <li><a href="{{ section.href }}"> {{ section.name }} </a></li>
+                    {% endfor %}
+                </ul>
+                <ul class="menu-section">
+                    <li class="section-title"> About </li>
+                </ul>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <div id="content" class = "container">
+        <div id="img-container">
+            {% for item in items %}
+                <a href=" {{ item.href }} " class="thickbox" rel="gallery-plants" title=" "><img src=" {{ item.dummy }}" height="item.height"></a>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
