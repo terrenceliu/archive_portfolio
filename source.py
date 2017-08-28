@@ -2,29 +2,25 @@ from jinja2 import Template
 import os
 ROOT_PATH = 'images/'
 
-def create_section(href, name):
-	return {'href': href, 'name': name}
-
-
-def getFile(section_path):
-	"""
-	:param root_path:
-	:param section_path:
-	:return: filenames
-	"""
-	files = []
-	if section_path:
-		path = os.path.join(ROOT_PATH, section_path)
-	else:
-		path = ROOT_PATH
-	for file in os.listdir(path):
-		if file.endswith('.jpg'):
-			files.append(file)
-		# files.append(file)
-		# print type(file)
-	return files
-
 def setImg(section_path):
+	def getFile(section_path):
+		"""
+		:param root_path:
+		:param section_path:
+		:return: filenames
+		"""
+		files = []
+		if section_path:
+			path = os.path.join(ROOT_PATH, section_path)
+		else:
+			path = ROOT_PATH
+		for file in os.listdir(path):
+			if file.endswith('.jpg'):
+				files.append(file)
+			# files.append(file)
+			# print type(file)
+		return files
+	
 	reg_files = getFile(section_path)
 	imgs = []
 	for ele in reg_files:
