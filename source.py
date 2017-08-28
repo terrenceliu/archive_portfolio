@@ -2,6 +2,9 @@ from jinja2 import Template
 import os
 ROOT_PATH = 'images/'
 
+def create_section(href, sec):
+	return {'href': href, 'name': sec}
+
 def setImg(section_path):
 	def getFile(section_path):
 		"""
@@ -34,7 +37,7 @@ def test():
 	with open('template.html', 'r') as f:
 		tmp = Template(f.read())
 	
-	sec_title = ['SF']
+	sec_title = ['SF', 'SH']
 	pg_title = [i.lower().replace(' ', '_') for i in sec_title]
 	secs = []
 	
@@ -46,7 +49,6 @@ def test():
 	
 	# Render index
 	with open('index.html', 'w') as f:
-		imgs = getFile('index')
 		html = tmp.render(
 			sections = secs
 		)
