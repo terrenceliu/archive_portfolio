@@ -37,7 +37,7 @@ def test():
 	with open('template.html', 'r') as f:
 		tmp = Template(f.read())
 	
-	sec_title = ['SF', 'SH']
+	sec_title = ['SF', 'SH', 'NK', 'Uttar Pradesh']
 	pg_title = [i.lower().replace(' ', '_') for i in sec_title]
 	secs = []
 	
